@@ -1,0 +1,7 @@
+{
+  "name": "note-app",
+  "main": "index.html",
+  "scripts": {
+  	"start": "parcel server index.html"
+  }
+}
