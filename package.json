@@ -1,0 +1,8 @@
+{
+  "name": "Personal Website",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "https://github.com/CripBoy/CripBoy.github.io",
+  "author": "cripboy <cripboygit@gmail.com>",
+  "license": "MIT"
+}
