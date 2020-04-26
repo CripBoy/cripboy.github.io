@@ -117,222 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../core/router.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var router = function () {
-  var stack = new Map();
-  var initialHash = true; // set all <a> events
-
-  function updateDOMlist() {
-    document.querySelectorAll("a").forEach(function (el) {
-      el.onclick = anchorHandler;
-    });
-
-    if (initialHash) {
-      initialHash = false;
-      updateURL(window.location.pathname);
-    }
-  } // <a> click event
-
-
-  function anchorHandler() {
-    event.preventDefault();
-    var path = event.currentTarget.href.toLowerCase();
-    var hash = event.currentTarget.hash;
-    var linkExternal = !(path.startsWith("http://".concat(window.location.hostname)) || path.startsWith("https://".concat(window.location.hostname)));
-    if (hash) document.querySelector(hash).scrollIntoView();else if (linkExternal) window.location = path;else updateURL(path);
-  } // change current url and emmiter him
-
-
-  function updateURL(url) {
-    var stack;
-    var bufferEl = document.createElement("a");
-    bufferEl.href = url;
-    url = bufferEl.pathname;
-    if (!(stack = checkHash(url))) return;
-    var location = "#" + url;
-    window.location.hash = location;
-    emiter(stack);
-  }
-
-  function checkHash(url) {
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = stack.keys()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var key = _step.value;
-        if (!(key === "/" && url == key) && !(url.substring(0, key.length) == key && key !== "/")) continue;
-        return [stack.get(key), url.slice(key.length + 1)];
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
-  }
-  /*
-  * @param {string} routeName
-  */
-
-
-  function add(routeName, callback) {
-    var _routeName$split = routeName.split("/:"),
-        _routeName$split2 = _slicedToArray(_routeName$split, 2),
-        route = _routeName$split2[0],
-        param = _routeName$split2[1];
-
-    stack.set(route, [param || null, callback]);
-  }
-  /*
-  * @param {string} stackName
-  */
-
-
-  function emiter(stack) {
-    var _stack = _slicedToArray(stack, 2),
-        hash = _stack[0],
-        param = _stack[1];
-
-    hash[1](param || hash[0]);
-  }
-
-  window.onload = updateDOMlist;
-  return {
-    page: add,
-    update: updateDOMlist
-  };
-}();
-
-var _default = router;
-exports.default = _default;
-},{}],"../../core/app.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var app = function () {
-  var stack = new Map();
-  var events = ["render"];
-
-  var __root;
-
-  function addObserver(eventName, callback) {
-    if (events.indexOf(eventName)) return;
-    stack.set(eventName, callback);
-  }
-
-  function setRoot(rootEl) {
-    __root = document.querySelector(rootEl);
-  }
-
-  function render(element) {
-    __root.innerHTML = element.render();
-    element.init(); // send render event
-
-    sender(events[0]);
-  } // event sender
-
-
-  function sender(event) {
-    stack.get(event)();
-  }
-
-  return {
-    root: setRoot,
-    on: addObserver,
-    render: render
-  };
-}();
-
-var _default = app;
-exports.default = _default;
-},{}],"../../core/component.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var component = function () {
-  "use strict";
-
-  var context = {};
-
-  context.create = function (customCtx) {
-    Object.assign(context, customCtx);
-  };
-  /*
-  * Render function to override
-  */
-
-
-  context.render = function () {
-    return "<div></div>";
-  };
-  /*
-  * init function to override
-  */
-
-
-  context.init = function () {};
-
-  return context;
-}();
-
-var _default = component;
-exports.default = _default;
-},{}],"../../core/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _router = _interopRequireDefault(require("./router.js"));
-
-var _app = _interopRequireDefault(require("./app.js"));
-
-var _component = _interopRequireDefault(require("./component.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = {
-  router: _router.default,
-  app: _app.default,
-  component: _component.default
-};
-exports.default = _default;
-},{"./router.js":"../../core/router.js","./app.js":"../../core/app.js","./component.js":"../../core/component.js"}],"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+})({"../node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -364,7 +149,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -399,56 +184,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style/main.css":[function(require,module,exports) {
+},{"./bundle-url":"../node_modules/parcel/src/builtins/bundle-url.js"}],"styles/index.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"pages/main.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _component = _interopRequireDefault(require("../../../core/component"));
-
-var _main = _interopRequireDefault(require("../style/main.css"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_component.default.create({
-  init: function init() {},
-  render: function render() {
-    return "\n\t\t\t<div>LOL</div>\n\t\t";
-  }
-});
-
-var _default = _component.default;
-exports.default = _default;
-},{"../../../core/component":"../../core/component.js","../style/main.css":"style/main.css"}],"script/index.js":[function(require,module,exports) {
-"use strict";
-
-var _core = _interopRequireDefault(require("../../../core"));
-
-var _main = _interopRequireDefault(require("../pages/main.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// // import initial page
-// initial route
-var app = _core.default.app,
-    router = _core.default.router;
-router.page("/", function () {
-  return app.render(_main.default);
-}); // app
-
-app.root("#root");
-app.on("render", function () {
-  router.update();
-});
-},{"../../../core":"../../core/index.js","../pages/main.js":"pages/main.js"}],"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel/src/builtins/css-loader.js"}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -476,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49749" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60595" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -652,5 +393,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","script/index.js"], null)
-//# sourceMappingURL=/script.7c337ef3.js.map
+},{}]},{},["../node_modules/parcel/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/styles.6145e9cd.js.map

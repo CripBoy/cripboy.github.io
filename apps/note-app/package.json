@@ -1,8 +1,0 @@
-{
-	"name": "note-app",
-	"main": "index.html",
-	"wireframe": "wireframe.cc/mEeAUz",
-	"scripts": {
-		"start": "parcel server ./src/index.html"
-	}
-}
