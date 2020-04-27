@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.html",
   "scripts": {
-    "start": "parcel app/index.html"
+    "start": "parcel app/index.html",
+    "build": "parcel build app/index.html -d ../prod --no-source-maps"
   },
   "repository": "https://github.com/CripBoy/CripBoy.github.io",
   "author": "cripboy <cripboygit@gmail.com>",
