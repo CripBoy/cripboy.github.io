@@ -6,5 +6,5 @@ Backbone.$(function()
 {
     new AppRouter();
 
-    Backbone.history.start();
+    Backbone.history.start({pushState: false})
 });

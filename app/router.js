@@ -5,7 +5,7 @@ const App = require('./views/app');
 
 const Router = {
     routes: {
-        "*path": () => new App(),
+        "": () => new App(),
     }
 }
 

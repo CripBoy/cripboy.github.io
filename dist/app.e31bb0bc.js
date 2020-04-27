@@ -16760,7 +16760,7 @@ var App = require('./views/app');
 
 var Router = {
   routes: {
-    "*path": function path() {
+    "": function _() {
       return new App();
     }
   }
@@ -16775,7 +16775,9 @@ var AppRouter = require("./router");
 
 Backbone.$(function () {
   new AppRouter();
-  Backbone.history.start();
+  Backbone.history.start({
+    pushState: false
+  });
 });
 },{"backbone":"../node_modules/backbone/backbone.js","jquery":"../node_modules/jquery/dist/jquery.js","./router":"router.js"}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -16805,7 +16807,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60595" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56179" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
