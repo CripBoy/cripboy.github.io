@@ -1,19 +1,8 @@
 {
-  "name": "personal-website",
+  "name": "github.io",
   "version": "1.0.0",
-  "main": "index.html",
-  "scripts": {
-    "start": "parcel app/index.html",
-    "build": "parcel build app/index.html -d ../prod --no-source-maps"
-  },
-  "repository": "https://github.com/CripBoy/CripBoy.github.io",
+  "main": "index.js",
+  "repository": "https://github.com/CripBoy/cripboy.github.io",
   "author": "cripboy <cripboygit@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "backbone": "^1.4.0",
-    "ejs": "^3.1.2",
-    "jquery": "^3.5.0",
-    "parcel": "^1.12.4",
-    "parcel-plugin-ejs-raw": "^1.0.0"
-  }
+  "license": "MIT"
 }
