@@ -1,0 +1,114 @@
+img {
+    width: 100%;
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+body {
+    background-image: url("/assets/background.png");
+    background-size: cover;
+    background-position: center;
+    font-family: 'Indie Flower', cursive;
+    color: #606060;
+}
+
+h3 {
+    font-size: 35px;
+}
+
+h4 {
+    font-size: 27px;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+a {
+    cursor: pointer;
+}
+
+a:hover {
+    outline: 2px;
+}
+
+input {
+    border-radius: 5px;
+    border: none;
+    background-color: #ebdac3;
+    padding: 10px 15px;
+    outline: none;
+    width: 100%;
+}
+
+button {
+    color: #fff;
+    background-color: #8a9560;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+}
+
+.textarea {
+    padding-bottom: 150px;
+      clear: left;
+
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.navbar {
+    padding: 10px;
+}
+
+.navbar-inner {
+    max-width: 1000px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.navbar .brand {
+    width: 120px;
+}
+
+.navbar .drop-down {
+    cursor: pointer;
+}
+
+.navbar .drop-down .flag {
+    width: 40px;
+}
+
+.ornament {
+    position: absolute;
+    bottom: 40px;
+    max-width: 1500px;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: .95;
+    z-index: -1;
+}
+
+.ornament-left {
+    width: 200px;
+}
+
+.ornament-right {
+    width: 300px;
+}
+
+.content-inner {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+}

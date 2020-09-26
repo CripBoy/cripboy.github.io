@@ -1,0 +1,33 @@
+.menu-cards {
+    position: absolute;
+    top: calc(50% + 100px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-item {
+    padding: 0 30px;
+}
+
+.card-icon {
+    width: 200px;
+    height: 250px;
+    padding: 60px 20px 0 20px;
+    margin: auto;
+    border: 4px dashed #808080;
+    border-radius: 10px;
+    position: relative;
+}
+
+.call-to-action {
+    text-align: center;
+    position: relative;
+    padding: 100px 0;
+}
+
+.icon-arrow-curved {
+    width: 130px;
+    position: absolute;
+    top: 0;
+    right: 50px;
+}

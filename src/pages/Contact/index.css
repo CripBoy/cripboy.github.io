@@ -1,0 +1,14 @@
+.center-content {
+    height: 80vh;
+}
+
+.title {
+    width: 130px;
+    white-space: nowrap;
+    border-bottom: 2px solid #ababab;
+}
+
+.discord-webhook {
+    width: 80%;
+    margin: auto;
+}
