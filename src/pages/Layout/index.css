@@ -11,7 +11,6 @@ img {
 body {
     background-image: url("/assets/background.png");
     background-size: cover;
-    background-position: center;
     font-family: 'Indie Flower', cursive;
     color: #606060;
 }
@@ -100,15 +99,19 @@ button {
 }
 
 .ornament-left {
-    width: 200px;
+    width: 180px;
 }
 
 .ornament-right {
-    width: 300px;
+    width: 260px;
 }
 
 .content-inner {
     max-width: 800px;
     width: 90%;
     margin: 0 auto;
+}
+
+.content-inner .title {
+    margin: 100px 0 0 0;
 }

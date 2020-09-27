@@ -1,0 +1,16 @@
+.me-thumb {
+    width: 100%;
+    height: 152px;
+    border-radius: 5px;
+    background-image: url("/assets/me.gif");
+    background-size: cover;
+    background-position: center;
+}
+
+.social-medias {
+    padding: 0 10px;
+}
+
+.social-icon {
+    padding: 0 7px;
+}

@@ -4,7 +4,7 @@ import "./index.css";
 
 function Projects() {
     return (
-        <Layout title="Projects">
+        <Layout title="Opensource">
             <div class="row">
                 <div class="col-md-3 mini-card">
                     <div class="mini-card-thumb">

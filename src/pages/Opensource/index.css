@@ -1,0 +1,10 @@
+.mini-card-thumb {
+    border: 4px dashed;
+    padding: 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.mini-card-thumb img {
+    background-color: #fff;
+}

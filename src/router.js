@@ -5,6 +5,8 @@ import { Route, HashRouter } from 'react-router-dom';
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
+import Opensource from "./pages/Opensource";
 
 function Routes()
 {
@@ -18,6 +20,12 @@ function Routes()
             </Route>
             <Route exact path='/contact'>
                 <Contact />
+            </Route>
+            <Route exact path='/about'>
+                <About />
+            </Route>
+            <Route exact path='/opensource'>
+                <Opensource />
             </Route>
         </HashRouter>
     )

@@ -32,12 +32,9 @@ function Contact() {
     }
 
     return (
-        <Layout>
-            <div class="center-content align-items-center d-flex">
+        <Layout title="Contact Webhook">
+            <div class="center-content">
                 <form class="discord-webhook text-left" onSubmit={e => sendWebHook(e)}>
-                    <div class="title mt-3 mb-3">
-                        <h3 class="font-weight-bold"><span>Contact me</span></h3>
-                    </div>
                     <div class="form-item mt-3 mb-3">
                         <div class="form-label mt-3 mb-3"><h5><span>Identify</span></h5></div>
                         <input placeholder="Some fun name for this webhook" type="text" name="pseudo" />

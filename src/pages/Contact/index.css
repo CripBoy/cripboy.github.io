@@ -1,7 +1,3 @@
-.center-content {
-    height: 80vh;
-}
-
 .title {
     width: 130px;
     white-space: nowrap;
@@ -9,6 +5,4 @@
 }
 
 .discord-webhook {
-    width: 80%;
-    margin: auto;
 }

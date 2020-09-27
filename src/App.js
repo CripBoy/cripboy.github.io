@@ -1,5 +1,5 @@
 import React from "react";
-import Router from "./router";
+import Router from "./Router";
 import { hot } from 'react-hot-loader';
 const finishHOT = hot(module);
 

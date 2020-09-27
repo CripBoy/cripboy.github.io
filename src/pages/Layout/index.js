@@ -10,7 +10,11 @@ import arrowDown from "../../assets/arrow-down.png";
 import objectsLeft from "../../assets/objects-left.png";
 import objectsRight from "../../assets/objects-right.png";
 
-function Home({children}) {
+function Home({children, title}) {
+const styles = title ? {
+    "max-width": "700px",
+} : {};
+
 return (
 <div>
     <div class="navbar">
@@ -31,7 +35,12 @@ return (
             </div>
         </div>
     </div>
-    <div class="content-inner">
+    <div class="content-inner" style={styles}>
+        {title ?
+            <div class="title mb-3">
+                <h3 class="font-weight-bold"><span>{title}</span></h3>
+            </div> 
+        : ""}
         {children}
     </div>
     <div class="ornament d-flex justify-content-between align-items-end">
