@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import Layout from "../Layout";
 
 // style
 import "./index.css";
 
 function Contact() {
+    const [style, setStyle] = useState({
+        display: "",
+    });
+
     function sendWebHook(event) {
         event.preventDefault();
 
@@ -12,8 +16,22 @@ function Contact() {
         const form = event.target;
         const [nick, msg] = form.getElementsByTagName("input");
 
-        if(!nick.value && !msg.value)
+        if(!nick.value || !msg.value) {
+            error();
             return;
+        }
+
+        function error() {
+            form.parentNode.textContent = "❌ Some problem at the process";
+        }
+
+        function sucess() {
+            form.parentNode.textContent = "✔️ Message sent successfully";
+        }
+
+        setStyle({
+            display: "none",
+        });
 
         fetch(webhook, {
             method: "post",
@@ -28,13 +46,15 @@ function Contact() {
                 }
               ]
             })
-        });
+        })
+        .then(() => sucess())
+        .catch(() => error());
     }
 
     return (
         <Layout title="Contact Webhook">
             <div class="center-content">
-                <form class="discord-webhook text-left" onSubmit={e => sendWebHook(e)}>
+                <form class="discord-webhook text-left" style={style} onSubmit={e => sendWebHook(e)}>
                     <div class="form-item mt-3 mb-3">
                         <div class="form-label mt-3 mb-3"><h5><span>Identify</span></h5></div>
                         <input placeholder="Some fun name for this webhook" type="text" name="pseudo" />

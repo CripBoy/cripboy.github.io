@@ -10,7 +10,8 @@ img {
 
 body {
     background-image: url("/assets/background.png");
-    background-size: cover;
+    background-size: 100%;
+    background-position: center;
     font-family: 'Indie Flower', cursive;
     color: #606060;
 }
@@ -88,10 +89,10 @@ button {
 }
 
 .ornament {
-    position: absolute;
+    position: fixed;
     bottom: 40px;
     max-width: 1500px;
-    width: 90%;
+    width: 95%;
     left: 50%;
     transform: translateX(-50%);
     opacity: .95;

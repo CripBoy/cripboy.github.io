@@ -7,6 +7,7 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Opensource from "./pages/Opensource";
+import Article from "./pages/Article";
 
 function Routes()
 {
@@ -26,6 +27,9 @@ function Routes()
             </Route>
             <Route exact path='/opensource'>
                 <Opensource />
+            </Route>
+            <Route exact path='/article/:type/:source/:title'>
+                <Article />
             </Route>
         </HashRouter>
     )

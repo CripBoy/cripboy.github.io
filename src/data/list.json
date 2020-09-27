@@ -1,0 +1,13 @@
+{
+    "projects": [{
+        "title": "Logico Cursos",
+        "icon": "https://i.imgur.com/B48Z4fA.png",
+        "source": "projects/logico_cursos",
+    },
+    {
+        "title": "Discord bot",
+        "icon": "https://discordapp.com/assets/1cbd08c76f8af6dddce02c5138971129.png",
+        "source": "projects/discord_bot",
+    }],
+    "opensource": []
+}
