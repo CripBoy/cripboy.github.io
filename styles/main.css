@@ -1,0 +1,104 @@
+* {
+    padding: 0;
+    margin: 0
+}
+
+body {
+    background-color: #13001b;
+    font-family: "Segoe UI", sans-serif;
+    color: #f1e4e5;
+}
+
+img, canvas {
+    image-rendering: pixelated;
+}
+
+canvas {
+    width: 100%;
+}
+
+p {
+    margin: 10px 0;
+}
+
+/*  usable  */
+
+.flex {
+    display: flex;
+}
+
+.btw {
+    justify-content: space-between;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.f-m {
+    font-size: 20px;
+}
+
+.f-light {
+    opacity: .8;
+}
+
+/*  custom  */
+
+.banner {
+    width: 100%;
+    min-height: 223px;
+    position: relative;
+}
+
+.social-medias {
+    width: 150px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.social-medias img {
+    width: 40px;
+    cursor: pointer;
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.menu {
+    text-align: center;
+}
+
+.menu ul {
+    list-style: none;
+    display: inline-flex;
+    margin: 30px 0 0 0;
+}
+
+.menu ul .active {
+    color: #e5b855;
+}
+
+.menu ul li {
+    margin: 0 30px;
+    cursor: pointer;
+}
+
+.content {
+    max-width: 750px;
+    width: 90%;
+    margin: 100px auto;
+}
+
+.profile .thumb img {
+    width: 200px;
+    cursor: pointer;
+}
+
+.profile .bio {
+    width: 500px;
+}
