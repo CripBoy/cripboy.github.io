@@ -14,7 +14,7 @@ class Sprite {
         this.y = y;
         this.angle = 0;
         this.opacity = 1;
-        this.anchor = 1;
+        this.anchor = 0;
     }
 
     update(){};
@@ -46,7 +46,7 @@ class Planet extends Sprite {
     }
 }
 
-class Constelation extends Sprite {
+class Constellation extends Sprite {
     constructor(image, x, y) {
         super(image, x, y);
         this.anchor = 0.5;
@@ -60,6 +60,7 @@ class Constelation extends Sprite {
 }
 
 async function main() {
+    const [pWidth, pHeight] = [721, 113];
     const container = document.querySelector(".banner");
     const canvas = document.getElementById("banner");
     const context = canvas.getContext("2d");
@@ -70,27 +71,24 @@ async function main() {
         libra: await loadImage("/images/anim/libra.png"),
         scorp: await loadImage("/images/anim/scorp.png"),
     }
-
-    const planet_1 = new Planet(images.planet_1, 60, 50);
-    const planet_2 = new Planet(images.planet_2, 279, 24);
-    const libra = new Constelation(images.libra, 180, 100);
-    const scorp = new Constelation(images.scorp, 580, 100);
+    const components = [
+        new Sprite(images.background, 0, 0),
+        new Planet(images.planet_1, 60, 50),
+        new Planet(images.planet_2, 279, 24),
+        new Constellation(images.libra, 180, 100),
+        new Constellation(images.scorp, 580, 100),
+    ];
 
     function update(delta) {
-        planet_1.update(delta);
-        planet_2.update(delta);
-        libra.update(delta);
-        scorp.update(delta);
+        for(const cop of components)
+            cop.update(delta);
     }
 
     function draw() {
-        context.clearRect(0, 0, 721, 113);
-        context.drawImage(images.background, 0, 0);
+        context.clearRect(0, 0, pWidth, pHeight);
 
-        planet_1.draw(context);
-        planet_2.draw(context);
-        libra.draw(context);
-        scorp.draw(context);
+        for(const cop of components)
+            cop.draw(context);
     }
 
     let start = Date.now();
