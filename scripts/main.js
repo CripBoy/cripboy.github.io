@@ -22,7 +22,6 @@ class Sprite {
     draw(context) {
         context.save();
         context.globalAlpha = this.opacity;
-        context.fillStyle = 'red';
         context.translate(
             this.x - this.anchor * this.image.width,
             this.y - this.anchor * this.image.height);
@@ -51,7 +50,6 @@ class Constelation extends Sprite {
     constructor(image, x, y) {
         super(image, x, y);
         this.anchor = 0.5;
-        this.opacity = 0.4;
         this.time = 0;
     }
 
@@ -62,6 +60,7 @@ class Constelation extends Sprite {
 }
 
 async function main() {
+    const container = document.querySelector(".banner");
     const canvas = document.getElementById("banner");
     const context = canvas.getContext("2d");
     const images = {
@@ -94,6 +93,9 @@ async function main() {
         scorp.draw(context);
     }
 
+    let start = Date.now();
+    let delta = 0;
+
     function loop() {
         const current = Date.now();
         const elapsed = current - start;
@@ -106,11 +108,22 @@ async function main() {
         requestAnimationFrame(loop);
     }
 
-    let start = Date.now();
-    let delta = 0;
+    function sizeSetup() {
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+
+        const scale = Math.max(
+            canvas.width / images.background.width,
+            canvas.height / images.background.height);
+
+        context.imageSmoothingEnabled = false;
+        context.scale(scale, scale);
+    }
 
     function init() {
-        context.imageSmoothingEnabled = true;
+        document.body.onresize = sizeSetup;
+
+        sizeSetup();
         loop();
     }
 

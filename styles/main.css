@@ -22,10 +22,12 @@ img, canvas {
     image-rendering: -moz-crisp-edges;
     image-rendering: -o-pixelated;
     image-rendering: pixelated;
-}
-
-canvas {
-    width: 100%;
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 p {
@@ -76,12 +78,6 @@ p {
 .social-medias img {
     width: 40px;
     cursor: pointer;
-    user-drag: none; 
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
 }
 
 .menu {
